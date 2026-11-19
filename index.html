@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e544a">
+  <title>Fredy &amp; Rocío</title>
+  <meta name="description" content="Invitación a la boda de Fredy y Rocío, y a los bautizos de Gabriela y Valeria.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e544a'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-size='11' fill='%23f3e6c4' font-family='Georgia'%3EFR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <section class="gate" id="gate" aria-label="Portada de la invitación">
+    <div class="gate-inner">
+      <p class="invite-kicker"><span>Estás cordialmente invitado</span><span>a nuestra boda</span></p>
+      <p class="gate-names"><span data-novio>Fredy</span> <em>&amp;</em> <span data-novia>Rocío</span></p>
+
+      <button class="seal-btn" id="openInvite" type="button">
+        <span class="envelope" aria-hidden="true">
+          <span class="env-letter"></span>
+          <span class="env-pocket"></span>
+          <span class="env-flap"></span>
+          <span class="seal-wrap">
+            <span class="env-seal">
+              <span class="seal-letters"><b data-inicial-novio>F</b><i>&amp;</i><b data-inicial-novia>R</b></span>
+            </span>
+          </span>
+        </span>
+        <span class="sr-only">Abrir la invitación de Fredy y Rocío</span>
+      </button>
+
+      <p class="gate-hint">Haz clic en el sello para descubrir nuestra invitación</p>
+    </div>
+  </section>
+
+  <main id="invitacion" tabindex="-1">
+    <article class="card">
+      <header class="hero">
+        <div class="monogram" aria-hidden="true"><span data-inicial-novio>F</span><em>&amp;</em><span data-inicial-novia>R</span></div>
+        <blockquote class="verse">
+          <p>“Mejores son dos que uno.”</p>
+          <cite>Eclesiastés 4:9</cite>
+        </blockquote>
+
+        <button class="photo-btn frame" type="button" data-full="public/imagen2.jpeg" aria-label="Ampliar la foto de Fredy y Rocío">
+          <img src="public/imagen2.jpeg" alt="Fredy y Rocío se miran y se toman de la mano">
+        </button>
+
+        <h1 class="names-lockup">
+          <span data-novio>Fredy</span>
+          <em>&amp;</em>
+          <span data-novia>Rocío</span>
+        </h1>
+        <p class="lede">Con la bendición de Dios y de nuestras familias, queremos que seas parte del día en que dos historias se vuelven una sola.</p>
+      </header>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block message" aria-label="Nos casamos">
+        <p class="eyebrow">Nuestra invitación</p>
+        <p class="message-copy">Queremos compartir contigo el comienzo de nuestra historia para siempre.</p>
+        <h2 class="script">¡Nos casamos!</h2>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block story">
+        <button class="photo-btn frame frame-soft" type="button" data-full="public/imagen1.jpeg" aria-label="Ampliar otra foto de Fredy y Rocío">
+          <img src="public/imagen1.jpeg" alt="Fredy y Rocío abrazados" loading="lazy">
+        </button>
+        <blockquote class="verse verse-story">
+          <p>Dos caminos, una historia y un amor que decidimos vivir para siempre.</p>
+        </blockquote>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block" id="cuando" aria-label="Fecha">
+        <p class="eyebrow">Solo falta</p>
+        <div id="countdown" class="countdown" hidden>
+          <div><strong data-unit="d">00</strong><span>días</span></div>
+          <div><strong data-unit="h">00</strong><span>hrs</span></div>
+          <div><strong data-unit="m">00</strong><span>min</span></div>
+          <div><strong data-unit="s">00</strong><span>seg</span></div>
+        </div>
+        <div id="fechaPendiente">
+          <h2 class="script" id="fechaTitulo">Muy pronto</h2>
+          <p class="lede" id="fechaLede">Les contaremos el día y la hora para que aparten la fecha.</p>
+        </div>
+        <p class="date-line" id="fechaTexto" hidden></p>
+        <a class="btn" id="agendar" hidden target="_blank" rel="noopener noreferrer">Agendar</a>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block">
+        <blockquote class="verse">
+          <p>El amor todo lo sufre, todo lo cree, todo lo espera, todo lo soporta.</p>
+          <cite>1 Corintios 13:7</cite>
+        </blockquote>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block" id="llegar" aria-label="Cómo llegar">
+        <p class="eyebrow">Ubicación</p>
+        <h2 class="script script-sm">Cómo llegar</h2>
+        <div class="map-art" aria-hidden="true">
+          <svg viewBox="0 0 360 150" preserveAspectRatio="xMidYMid slice">
+            <rect width="360" height="150" fill="#efe4d2"/>
+            <path d="M0 46h360" stroke="#0e544a" stroke-width="14" opacity=".1"/>
+            <path d="M0 108h360" stroke="#0e544a" stroke-width="10" opacity=".08"/>
+            <path d="M188 0v150" stroke="#f7f3ea" stroke-width="16"/>
+            <path d="M0 92c48-18 78 10 124-6 42-14 70 16 118 4 40-8 78-2 118 12" fill="none" stroke="#0e544a" stroke-width="3" opacity=".45"/>
+            <path d="M214 28c-10 14-16 22-16 32a16 16 0 1 0 32 0c0-10-6-18-16-32z" fill="#b8924a"/>
+            <circle cx="214" cy="62" r="5" fill="#0e544a"/>
+          </svg>
+        </div>
+        <div class="loc-list">
+          <article class="loc" id="locCeremonia">
+            <p class="eyebrow">Ceremonia</p>
+            <div class="js-filled" hidden>
+              <h3 class="js-lugar"></h3>
+              <p class="js-dir"></p>
+              <p class="js-hora"></p>
+            </div>
+            <p class="js-empty">Pronto confirmaremos el lugar y la hora.</p>
+            <a class="btn js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+          </article>
+          <article class="loc" id="locRecepcion">
+            <p class="eyebrow">Recepción</p>
+            <div class="js-filled" hidden>
+              <h3 class="js-lugar"></h3>
+              <p class="js-dir"></p>
+              <p class="js-hora"></p>
+            </div>
+            <p class="js-empty">Pronto confirmaremos el lugar y la hora.</p>
+            <a class="btn js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+          </article>
+        </div>
+        <p class="note" id="mapsNote">Muy pronto compartiremos la dirección para que puedan llegar sin problema.</p>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block rsvp-card" aria-label="Confirmar asistencia">
+        <p class="eyebrow">Asistencia</p>
+        <h2 class="script script-sm">¿Nos acompañas?</h2>
+        <p class="lede">Queremos guardar un lugar especial para ti. Cuéntanos si contamos contigo.</p>
+        <button class="btn" id="openRsvp" type="button">Confirmar asistencia</button>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block" id="vestimenta" aria-label="Código de vestimenta">
+        <p class="eyebrow">Código de vestimenta</p>
+        <h2 class="script script-sm">Elegante / formal</h2>
+        <p class="lede">Para que este día se vea como lo soñamos, les pedimos reservar estos tonos para los novios y la ambientación.</p>
+        <ul class="swatches">
+          <li>
+            <span class="swatch swatch-emerald"></span>
+            <span>Verde esmeralda</span>
+          </li>
+          <li>
+            <span class="swatch swatch-white"></span>
+            <span>Blanco</span>
+          </li>
+          <li>
+            <span class="swatch swatch-beige"></span>
+            <span>Beige</span>
+          </li>
+        </ul>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block">
+        <p class="eyebrow">Un detalle</p>
+        <h2 class="script script-sm">Lluvia de sobres</h2>
+        <p class="lede">Tu presencia es el regalo que más nos importa. Si deseas hacernos un obsequio, lo recibimos con cariño en una lluvia de sobres.</p>
+      </section>
+
+      <div class="divider" aria-hidden="true"><span></span></div>
+
+      <section class="block closing">
+        <button class="photo-btn frame" type="button" data-full="public/imagen.jpeg" aria-label="Ampliar el retrato de Fredy y Rocío">
+          <img src="public/imagen.jpeg" alt="Retrato de Fredy sentado y Rocío de pie a su lado" loading="lazy">
+        </button>
+        <h2 class="script">¡Te esperamos!</h2>
+        <p class="names-small"><span data-novio>Fredy</span> <em>&amp;</em> <span data-novia>Rocío</span></p>
+        <a class="text-link" href="#bautizos">Y más abajo, los bautizos</a>
+      </section>
+    </article>
+
+    <section class="baptisms" id="bautizos" aria-label="Bautizos de Gabriela y Valeria">
+      <p class="eyebrow eyebrow-light">También celebramos</p>
+      <h2 class="script script-light">Los bautizos</h2>
+      <p class="lede lede-light">La alegría de este día continúa. Los invitamos a acompañarnos en el bautizo de Gabriela y en el bautizo de Valeria.</p>
+      <div class="baptism-grid">
+        <article class="baptism-card" data-baptism="0">
+          <svg class="cross" viewBox="0 0 32 32" aria-hidden="true"><path d="M14 4h4v8h8v4h-8v12h-4V16H6v-4h8z"/></svg>
+          <p class="eyebrow">Bautizo</p>
+          <h3 class="script" data-b-name>Gabriela</h3>
+          <div class="js-details"></div>
+          <a class="btn btn-line js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </article>
+        <article class="baptism-card" data-baptism="1">
+          <svg class="cross" viewBox="0 0 32 32" aria-hidden="true"><path d="M14 4h4v8h8v4h-8v12h-4V16H6v-4h8z"/></svg>
+          <p class="eyebrow">Bautizo</p>
+          <h3 class="script" data-b-name>Valeria</h3>
+          <div class="js-details"></div>
+          <a class="btn btn-line js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Con amor, <span data-pareja>Fredy &amp; Rocío</span></p>
+    </footer>
+  </main>
+
+  <dialog class="modal" id="rsvp" aria-labelledby="rsvpTitle">
+    <form class="sheet" id="rsvpForm">
+      <button class="icon-x" id="closeRsvp" type="button" aria-label="Cerrar">×</button>
+      <p class="eyebrow">Asistencia</p>
+      <h2 class="script script-sm" id="rsvpTitle">Confirmar asistencia</h2>
+      <div class="form-body" id="rsvpFields">
+        <label class="field">
+          <span>Tu nombre</span>
+          <input name="nombre" type="text" required maxlength="80" autocomplete="name" placeholder="Cómo te llamas">
+        </label>
+        <label class="field">
+          <span>¿A qué nos acompañas?</span>
+          <select name="evento">
+            <option value="la boda">A la boda</option>
+            <option value="el bautizo de Gabriela">Al bautizo de Gabriela</option>
+            <option value="el bautizo de Valeria">Al bautizo de Valeria</option>
+            <option value="la boda y los bautizos">A la boda y los bautizos</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>¿Cuántas personas van, incluyéndote?</span>
+          <input name="personas" type="number" min="1" max="12" value="1" required>
+        </label>
+        <div class="choices" role="group" aria-label="Respuesta">
+          <button class="choice" type="button" data-choice="si" aria-pressed="false">Sí, confirmo</button>
+          <button class="choice" type="button" data-choice="no" aria-pressed="false">No puedo ir</button>
+        </div>
+        <p class="form-error" id="rsvpError" hidden>Cuéntanos si puedes acompañarnos.</p>
+        <button class="btn btn-full" type="submit">Enviar confirmación</button>
+      </div>
+      <div class="thanks" id="rsvpThanks" hidden>
+        <h3 class="script script-sm">Gracias</h3>
+        <p id="thanksText"></p>
+        <textarea id="thanksMessage" readonly></textarea>
+        <button class="btn btn-line" id="copyMsg" type="button">Copiar mensaje</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="icon-x icon-x-light" id="closeLight" type="button" aria-label="Cerrar foto">×</button>
+    <img id="lightImg" alt="">
+  </dialog>
+
+  <img class="rose rose-float rose-float-left" src="public/rosas-trio.png" alt="" aria-hidden="true">
+  <img class="rose rose-float rose-float-right" src="public/rosas-ramo.png" alt="" aria-hidden="true">
+  <div class="floracion" id="floracion" aria-hidden="true"></div>
+  <audio id="musica" src="public/tengo-ganas.mp3" loop preload="auto"></audio>
+  <button class="sound-btn" id="soundBtn" type="button" aria-pressed="true" aria-label="Silenciar música">
+    <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 9.5a3.5 3.5 0 0 1 0 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 6.5a6.5 6.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 10l4 4M21 10l-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </button>
+
+  <script src="js/invite.js"></script>
+</body>
+</html>
