@@ -218,7 +218,7 @@ function bloomFlowers() {
   const layer = $("#floracion");
   if (!layer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   layer.replaceChildren();
-  const roses = ["public/rosas-ramo.png", "public/rosas-trio.png"];
+  const roses = ["rosas-ramo.png", "rosas-trio.png"];
   for (let i = 0; i < 4; i += 1) {
     const bloom = document.createElement("img");
     bloom.className = "rose-burst";
