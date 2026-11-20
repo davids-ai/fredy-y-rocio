@@ -2,16 +2,16 @@
  * Datos de la invitación.
  * Cuando tengan fecha, lugar y WhatsApp, completa solo este objeto.
  *
- * fechaISO: "2027-01-13T00:00:00-05:00"
- * fechaTexto: "Miércoles 13 de enero de 2027"
+ * fechaISO: "2027-01-09T00:00:00-05:00"
+ * fechaTexto: "Sábado 9 de enero de 2027"
  * whatsapp: "573001112233"  (indicativo + número, sin + ni espacios)
  * maps: enlace de Google Maps, o deja vacío y usa direccion
  */
 const EVENTO = {
   novio: "Fredy",
   novia: "Rocío",
-  fechaISO: "2027-01-13T00:00:00-05:00",
-  fechaTexto: "Miércoles 13 de enero de 2027",
+  fechaISO: "2027-01-09T00:00:00-05:00",
+  fechaTexto: "Sábado 9 de enero de 2027",
   ceremonia: {
     lugar: "Hacienda Biafra",
     direccion: "",
