@@ -14,6 +14,7 @@
 </head>
 <body>
   <section class="gate" id="gate" aria-label="Portada de la invitación">
+    <img class="gate-flowers" src="flores-marco.png" alt="" aria-hidden="true">
     <div class="gate-inner">
       <p class="invite-kicker"><span>Estás cordialmente invitado</span><span>a nuestra boda</span></p>
       <p class="gate-names"><span data-novio>Fredy</span> <em>&amp;</em> <span data-novia>Rocío</span></p>
@@ -33,6 +34,7 @@
       </button>
 
       <p class="gate-hint">Haz clic en el sello para descubrir nuestra invitación</p>
+      <p class="gate-baptism">También los bautizos de Gabriela y Valeria</p>
     </div>
   </section>
 
@@ -119,28 +121,16 @@
             <circle cx="214" cy="62" r="5" fill="#0e544a"/>
           </svg>
         </div>
-        <div class="loc-list">
-          <article class="loc" id="locCeremonia">
-            <p class="eyebrow">Ceremonia</p>
-            <div class="js-filled" hidden>
-              <h3 class="js-lugar"></h3>
-              <p class="js-dir"></p>
-              <p class="js-hora"></p>
-            </div>
-            <p class="js-empty">Pronto confirmaremos el lugar y la hora.</p>
-            <a class="btn js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </article>
-          <article class="loc" id="locRecepcion">
-            <p class="eyebrow">Recepción</p>
-            <div class="js-filled" hidden>
-              <h3 class="js-lugar"></h3>
-              <p class="js-dir"></p>
-              <p class="js-hora"></p>
-            </div>
-            <p class="js-empty">Pronto confirmaremos el lugar y la hora.</p>
-            <a class="btn js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-          </article>
-        </div>
+        <article class="loc" id="locLugar">
+          <p class="eyebrow">Ceremonia y recepción</p>
+          <div class="js-filled" hidden>
+            <h3 class="js-lugar"></h3>
+            <p class="js-dir"></p>
+            <p class="js-hora"></p>
+          </div>
+          <p class="js-empty">Pronto confirmaremos el lugar y la hora.</p>
+          <a class="btn js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        </article>
         <p class="note" id="mapsNote">Muy pronto compartiremos la dirección para que puedan llegar sin problema.</p>
       </section>
 
@@ -191,31 +181,8 @@
         </button>
         <h2 class="script">¡Te esperamos!</h2>
         <p class="names-small"><span data-novio>Fredy</span> <em>&amp;</em> <span data-novia>Rocío</span></p>
-        <a class="text-link" href="#bautizos">Y más abajo, los bautizos</a>
       </section>
     </article>
-
-    <section class="baptisms" id="bautizos" aria-label="Bautizos de Gabriela y Valeria">
-      <p class="eyebrow eyebrow-light">También celebramos</p>
-      <h2 class="script script-light">Los bautizos</h2>
-      <p class="lede lede-light">La alegría de este día continúa. Los invitamos a acompañarnos en el bautizo de Gabriela y en el bautizo de Valeria.</p>
-      <div class="baptism-grid">
-        <article class="baptism-card" data-baptism="0">
-          <svg class="cross" viewBox="0 0 32 32" aria-hidden="true"><path d="M14 4h4v8h8v4h-8v12h-4V16H6v-4h8z"/></svg>
-          <p class="eyebrow">Bautizo</p>
-          <h3 class="script" data-b-name>Gabriela</h3>
-          <div class="js-details"></div>
-          <a class="btn btn-line js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-        </article>
-        <article class="baptism-card" data-baptism="1">
-          <svg class="cross" viewBox="0 0 32 32" aria-hidden="true"><path d="M14 4h4v8h8v4h-8v12h-4V16H6v-4h8z"/></svg>
-          <p class="eyebrow">Bautizo</p>
-          <h3 class="script" data-b-name>Valeria</h3>
-          <div class="js-details"></div>
-          <a class="btn btn-line js-maps" hidden target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-        </article>
-      </div>
-    </section>
 
     <footer class="site-footer">
       <p>Con amor, <span data-pareja>Fredy &amp; Rocío</span></p>
@@ -231,15 +198,6 @@
         <label class="field">
           <span>Tu nombre</span>
           <input name="nombre" type="text" required maxlength="80" autocomplete="name" placeholder="Cómo te llamas">
-        </label>
-        <label class="field">
-          <span>¿A qué nos acompañas?</span>
-          <select name="evento">
-            <option value="la boda">A la boda</option>
-            <option value="el bautizo de Gabriela">Al bautizo de Gabriela</option>
-            <option value="el bautizo de Valeria">Al bautizo de Valeria</option>
-            <option value="la boda y los bautizos">A la boda y los bautizos</option>
-          </select>
         </label>
         <label class="field">
           <span>¿Cuántas personas van, incluyéndote?</span>

@@ -2,29 +2,29 @@
  * Datos de la invitación.
  * Cuando tengan fecha, lugar y WhatsApp, completa solo este objeto.
  *
- * fechaISO: "2026-12-12T15:30:00-05:00"
- * fechaTexto: "Sábado 12 de diciembre"
+ * fechaISO: "2027-01-13T00:00:00-05:00"
+ * fechaTexto: "Miércoles 13 de enero de 2027"
  * whatsapp: "573001112233"  (indicativo + número, sin + ni espacios)
  * maps: enlace de Google Maps, o deja vacío y usa direccion
  */
 const EVENTO = {
   novio: "Fredy",
   novia: "Rocío",
-  fechaISO: "",
-  fechaTexto: "",
+  fechaISO: "2027-01-13T00:00:00-05:00",
+  fechaTexto: "Miércoles 13 de enero de 2027",
   ceremonia: {
-    lugar: "",
+    lugar: "Hacienda Biafra",
     direccion: "",
     hora: "",
-    maps: "",
+    maps: "https://www.google.com/maps/place/Hacienda+Biafra/@5.7292483,-72.9611851,1328m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e6a469ba6786c9b:0x6f23c311f522c9e5!8m2!3d5.7292483!4d-72.9611851!16s%2Fg%2F11bz07cd9j",
   },
   recepcion: {
-    lugar: "",
+    lugar: "Hacienda Biafra",
     direccion: "",
     hora: "",
-    maps: "",
+    maps: "https://www.google.com/maps/place/Hacienda+Biafra/@5.7292483,-72.9611851,1328m/data=!3m2!1e3!4b1!4m6!3m5!1s0x8e6a469ba6786c9b:0x6f23c311f522c9e5!8m2!3d5.7292483!4d-72.9611851!16s%2Fg%2F11bz07cd9j",
   },
-  whatsapp: "",
+  whatsapp: "573102307772",
   bautizos: [
     { nombre: "Gabriela", fechaTexto: "", hora: "", lugar: "", direccion: "", maps: "" },
     { nombre: "Valeria", fechaTexto: "", hora: "", lugar: "", direccion: "", maps: "" },
@@ -125,12 +125,22 @@ function fillDate() {
   pending.hidden = true;
   countdown.hidden = false;
   const place = [EVENTO.ceremonia.lugar, EVENTO.ceremonia.direccion].map(textOf).filter(Boolean).join(", ");
-  const end = new Date(target.getTime() + 4 * 60 * 60 * 1000);
-  const stamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  const allDay = /T00:00:00/.test(iso);
+  let dates;
+  if (allDay) {
+    const [year, month, day] = iso.slice(0, 10).split("-").map(Number);
+    const next = new Date(Date.UTC(year, month - 1, day + 1));
+    const endDay = next.toISOString().slice(0, 10).replace(/-/g, "");
+    dates = `${iso.slice(0, 10).replace(/-/g, "")}/${endDay}`;
+  } else {
+    const end = new Date(target.getTime() + 4 * 60 * 60 * 1000);
+    const stamp = (date) => date.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    dates = `${stamp(target)}/${stamp(end)}`;
+  }
   const params = new URLSearchParams({
     action: "TEMPLATE",
     text: `Boda de ${EVENTO.novio} y ${EVENTO.novia}`,
-    dates: `${stamp(target)}/${stamp(end)}`,
+    dates,
     details: "Invitación de boda",
   });
   if (place) params.set("location", place);
@@ -304,12 +314,11 @@ function setupRsvp() {
     }
     const data = new FormData(form);
     const nombre = textOf(String(data.get("nombre") || ""));
-    const evento = textOf(String(data.get("evento") || "la boda"));
     const personas = Math.max(1, Number(data.get("personas")) || 1);
     const pareja = `${EVENTO.novio} y ${EVENTO.novia}`;
     const mensaje = choice === "si"
-      ? `Hola, soy ${nombre}. Confirmo mi asistencia a ${evento} de ${pareja}. Vamos ${personas} ${personas === 1 ? "persona" : "personas"}.`
-      : `Hola, soy ${nombre}. No podré acompañarlos en ${evento} de ${pareja}.`;
+      ? `Hola, soy ${nombre}. Confirmo mi asistencia a la boda de ${pareja}. Vamos ${personas} ${personas === 1 ? "persona" : "personas"}.`
+      : `Hola, soy ${nombre}. No podré acompañarlos en la boda de ${pareja}.`;
 
     const phone = textOf(EVENTO.whatsapp).replace(/\D/g, "");
     $("#thanksMessage").value = mensaje;
@@ -336,6 +345,25 @@ function setupRsvp() {
   });
 }
 
+function setupScrollLetters() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const lines = document.querySelectorAll(
+    "#invitacion .script, #invitacion .names-lockup, #invitacion .names-small, #invitacion .eyebrow, #invitacion .loc h3, #invitacion .lede, #invitacion .verse p, #invitacion .verse cite, #invitacion .message-copy, #invitacion .date-line"
+  );
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-in");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.35, rootMargin: "0px 0px -6% 0px" });
+
+  lines.forEach((node) => {
+    node.classList.add("linea-reveal");
+    observer.observe(node);
+  });
+}
+
 function setupLightbox() {
   const dialog = $("#lightbox");
   const image = $("#lightImg");
@@ -354,11 +382,11 @@ function setupLightbox() {
 
 setupMusic();
 fillNames();
-const ceremonyHasMap = fillPlace("#locCeremonia", EVENTO.ceremonia);
-const receptionHasMap = fillPlace("#locRecepcion", EVENTO.recepcion);
-$("#mapsNote").hidden = ceremonyHasMap || receptionHasMap;
+const placeHasMap = fillPlace("#locLugar", EVENTO.ceremonia);
+$("#mapsNote").hidden = placeHasMap;
 fillDate();
 fillBaptisms();
+setupScrollLetters();
 openGate();
 setupRsvp();
 setupLightbox();
